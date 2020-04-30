@@ -75,7 +75,8 @@ while True:
                                        'random_id': random.random(),
                                        "keyboard": keyboard})
                 else:
-                    message = f'Здравствуй пользователь @id{event.user_id}'
+                    message = f'Здравствуй пользователь @id{event.user_id} !' \
+                              f'Выбери кнопку'
                     vk_session.method('messages.send',
                                       {'user_id': event.user_id,
                                        'message': message,
