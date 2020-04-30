@@ -20,44 +20,64 @@ def get_button(label, color, payload=""):
     }, color=color)
 
 
+labels = {"statistics": "Статистика",
+          "news": "Новости",
+          "symptoms": "Симптомы",
+          "save_yourself": "Как уберечься"
+          }
+
 keyboard = {
-    "one_time": False,
     "buttons": [
         [
-            get_button(label="Статистика", color="positive"),
-            get_button(label="Новости", color="negative")
-        ]
+            get_button(label=labels["statistics"], color="default"),
+            get_button(label=labels["news"], color="primary")
+        ],
+        [get_button(label=labels["save_yourself"], color="positive")],
+        [get_button(label=labels["symptoms"], color="negative")]
     ]
 }
 
 keyboard = json.dumps(keyboard, ensure_ascii=False).encode('utf-8')
 keyboard = str(keyboard.decode('utf-8'))
 
-# keyboard.add_button('Статистика', color=VkColor.POSITIVE)
-# keyboard.add_line()
-# keyboard.add_location_button()
-
-# keyboard.add_line()
-# keyboard.add_button('Новости', color=VkColor.NEGATIVE)
-
-#keyboard.add_vkapps_button(app_id=vk_session.app_id,
- #                          owner_id=32334223432,
- #                          label="Клава",
- #                          hash="send_keyboard")
-
 while True:
     for event in longpoll.listen():
         if event.type == VkEventType.MESSAGE_NEW:
 
             if event.from_user and not event.from_me:
-                message = f'Здравствуй пользователь1 @id{event.user_id}'
-                vk_session.method('messages.send',
-                                  {'user_id': event.user_id,
-                                   'message': message,
-                                   'random_id': random.random(),
-                                   "keyboard": keyboard})
 
-                #vk_session.method("messages.send",
-                 #                 {"user_id": event.user_id,
-                 #                  "message": "Нажми на кнопку",
-                 #                  "keyboard": keyboard})
+                if event.message == labels["statistics"]:
+                    message = "Заразились 3.300.000 человек"
+                    vk_session.method('messages.send',
+                                      {'user_id': event.user_id,
+                                       'message': message,
+                                       'random_id': random.random(),
+                                       "keyboard": keyboard})
+                elif event.message == labels["news"]:
+                    message = "Число зараженных в США перевалило за один миллион человек"
+                    vk_session.method('messages.send',
+                                      {'user_id': event.user_id,
+                                       'message': message,
+                                       'random_id': random.random(),
+                                       "keyboard": keyboard})
+                elif event.message == labels["save_yourself"]:
+                    message = "Надевайте маску и сохраняйте социальную дистанцию"
+                    vk_session.method('messages.send',
+                                      {'user_id': event.user_id,
+                                       'message': message,
+                                       'random_id': random.random(),
+                                       "keyboard": keyboard})
+                elif event.message == labels["symptoms"]:
+                    message = "Тяжело дышать. Головная боль"
+                    vk_session.method('messages.send',
+                                      {'user_id': event.user_id,
+                                       'message': message,
+                                       'random_id': random.random(),
+                                       "keyboard": keyboard})
+                else:
+                    message = f'Здравствуй пользователь @id{event.user_id}'
+                    vk_session.method('messages.send',
+                                      {'user_id': event.user_id,
+                                       'message': message,
+                                       'random_id': random.random(),
+                                       "keyboard": keyboard})
