@@ -19,46 +19,63 @@ def get_button(label, color, payload=""):
     }, color=color)
 
 
-main_labels = {
+keyboard_labels = {
     "statistics": "Статистика",
     "news": "Новости",
     "save_yourself": "Как защититься",
     "digital_pass": "Цифровой пропуск",
     "stickers": "Коронастикеры",
     "let_me_help": "Помочь",
+    # "back" means main keyboard
     "back": "Назад"
 }
 
 main_keyboard = {
     "buttons": [
-        [get_button(label=main_labels["statistics"], color="default"),
-         get_button(label=main_labels["news"], color="default")],
-        [get_button(label=main_labels["save_yourself"], color="default"),
-         get_button(label=main_labels["digital_pass"], color="default")],
-        [get_button(label=main_labels["stickers"], color="default"),
-         get_button(label=main_labels["let_me_help"], color="default")],
+        [get_button(label=keyboard_labels["statistics"], color="default"),
+         get_button(label=keyboard_labels["news"], color="default")],
+        [get_button(label=keyboard_labels["save_yourself"], color="default"),
+         get_button(label=keyboard_labels["digital_pass"], color="default")],
+        [get_button(label=keyboard_labels["stickers"], color="default"),
+         get_button(label=keyboard_labels["let_me_help"], color="default")],
     ]
 }
 
-news_labels = {
+info_labels = {
+    # news
     "Russia": "Россия",
     "Moscow": "Москва",
     "Planet": "Планета",
-    "Europe": "Европа"
+    "Europe": "Европа",
+    # statistics
+    "on Russia": " по России",
+    "on Moscow": " по Москве",
+    "on Planet": " по Планете",
+    "on Europe": " по Европе"
 }
 
 news_keyboard = {
     "buttons": [
-        [get_button(label=news_labels["Russia"], color="primary"),
-         get_button(label=news_labels["Moscow"], color="primary")],
-        [get_button(label=news_labels["Planet"], color="primary"),
-         get_button(label=news_labels["Europe"], color="primary")],
-        [get_button(label=main_labels["back"], color="negative")],
+        [get_button(label=info_labels["Russia"], color="primary"),
+         get_button(label=info_labels["Moscow"], color="primary")],
+        [get_button(label=info_labels["Planet"], color="primary"),
+         get_button(label=info_labels["Europe"], color="primary")],
+        [get_button(label=keyboard_labels["back"], color="negative")],
+    ]
+}
+
+statistics_keyboard = {
+    "buttons": [
+        [get_button(label=info_labels["Russia"], color="primary"),
+         get_button(label=info_labels["Moscow"], color="primary")],
+        [get_button(label=info_labels["Planet"], color="primary"),
+         get_button(label=info_labels["Europe"], color="primary")],
+        [get_button(label=keyboard_labels["back"], color="negative")],
     ]
 }
 
 keyboards = {
-    "main": main_keyboard,
+    "back": main_keyboard,
     "news": news_keyboard
 }
 
@@ -77,6 +94,7 @@ for key in keyboards:
 del main_keyboard
 del news_keyboard
 
+
 # main_keyboard = json.dumps(main_keyboard, ensure_ascii=False).encode('utf-8')
 # main_keyboard = str(main_keyboard.decode('utf-8'))
 
@@ -94,33 +112,38 @@ def change_keyboard(user_id, keyboard, message="Выберите кнопку"):
                        "keyboard": keyboard})
 
 
+def print_info(user_id, message):
+    vk_session.method('messages.send',
+                      {'user_id': user_id,
+                       'message': message,
+                       'random_id': random.random(),
+                       })
+
+
+def default_answer(user_id):
+    vk_session.method('messages.send',
+                      {'user_id': user_id,
+                       'message': "Ваша команда не распознана. Выберите кнопку.",
+                       'random_id': random.random(),
+                       })
+
+
 while True:
     for event in long_poll.listen():
         if event.type == VkEventType.MESSAGE_NEW:
             if event.from_user and not event.from_me:
-                if event.message == main_labels["statistics"]:
-                    message = "Заразились 3.300.000 человек"
-                    vk_session.method('messages.send',
-                                      {'user_id': event.user_id,
-                                       'message': message,
-                                       'random_id': random.random(),
-                                       "keyboard": keyboards["main"]})
-                elif event.message == main_labels["news"]:
-                    change_keyboard(event.user_id, keyboards["news"], message=main_labels["news"])
-                elif event.message == main_labels["back"]:
-                    change_keyboard(event.user_id, keyboards["main"], message=main_labels["back"])
-                elif event.message == main_labels["save_yourself"]:
-                    message = "Надевайте маску и сохраняйте социальную дистанцию"
-                    vk_session.method('messages.send',
-                                      {'user_id': event.user_id,
-                                       'message': message,
-                                       'random_id': random.random(),
-                                       "keyboard": keyboards["main"]})
+                if event.message in keyboard_labels.values():
+                    for key in keyboard_labels:
+                        if event.message == keyboard_labels[key]:
+                            change_keyboard(event.user_id,
+                                            keyboards[key],
+                                            message=keyboard_labels[key])
+                            break
+                elif event.message in info_labels.values():
+                    for key in info_labels:
+                        if event.message == info_labels[key]:
+                            print_info(event.user_id,
+                                       message="pass")
+                            break
                 else:
-                    message = f'Здравствуй дорогой пользователь @id{event.user_id} !' \
-                              f'Выбери кнопку'
-                    vk_session.method('messages.send',
-                                      {'user_id': event.user_id,
-                                       'message': message,
-                                       'random_id': random.random(),
-                                       "keyboard": keyboards["main"]})
+                    default_answer(event.user_id)
