@@ -32,7 +32,7 @@ def get_button(label, color, payload=""):
 def create_keyboard(buttons, main=False):
     result = dict()
     result["buttons"] = list()
-    columns = 3
+    columns = 2
 
     for button_number in range(len(buttons)):
         if button_number % columns == 0:
