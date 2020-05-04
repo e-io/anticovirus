@@ -77,7 +77,7 @@
     },
     {
       "type": "keyboard",
-      "name": "Statistics",
+      "name": "statistics",
       "label": {"ru": "Статистика"},
       "buttons": [
         {

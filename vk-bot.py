@@ -10,6 +10,8 @@ import config
 vk_session = vk_api.VkApi(token=config.vk_token)
 long_poll = VkLongPoll(vk_session)
 
+data = json.load(open("data.json", encoding="utf-8"))
+
 
 def get_button(label, color, payload=""):
     return dict(action={
@@ -27,7 +29,7 @@ keyboard_labels = {
     "stickers": "Коронастикеры",
     "let_me_help": "Помочь",
     # "back" means main keyboard
-    "back": "Назад"
+    "back": "back"
 }
 
 keyboards = dict()
@@ -121,11 +123,20 @@ keyboards["stickers"] = {
     ]
 }
 
-keyboards["let_me_help"] = {
-    "buttons": [
-        [get_button(label=keyboard_labels["back"], color="negative")],
-    ]
-}
+
+def create_keyboard(buttons):
+    result = dict()
+    result["buttons"] = list()
+
+    result["buttons"].append(list())
+
+    result["buttons"][0].append(get_button(label=buttons[0]["label"]["ru"], color="primary"))
+    result["buttons"][0].append(get_button(label=data["back_name"], color="negative"))
+    return result
+
+
+for keyboard_button in data["buttons"]:
+    keyboards[keyboard_button["name"]] = create_keyboard(keyboard_button["buttons"])
 
 
 def change_keyboard(keyboard):
