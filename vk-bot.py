@@ -12,15 +12,6 @@ long_poll = VkLongPoll(vk_session)
 
 data = json.load(open("data.json", encoding="utf-8"))
 
-
-def get_button(label, color, payload=""):
-    return dict(action={
-        "type": "text",
-        "label": label,
-        "payload": json.dumps(payload)
-    }, color=color)
-
-
 keyboard_labels = {
     "statistics": "Статистика",
     "news": "Новости",
@@ -30,19 +21,6 @@ keyboard_labels = {
     "let_me_help": "Помочь",
     # "back" means main keyboard
     "back": "back"
-}
-
-keyboards = dict()
-
-keyboards["back"] = {
-    "buttons": [
-        [get_button(label=keyboard_labels["news"], color="default"),
-         get_button(label=keyboard_labels["statistics"], color="default")],
-        [get_button(label=keyboard_labels["save_yourself"], color="default"),
-         get_button(label=keyboard_labels["digital_pass"], color="default")],
-        [get_button(label=keyboard_labels["stickers"], color="default"),
-         get_button(label=keyboard_labels["let_me_help"], color="default")],
-    ]
 }
 
 info_labels = {
@@ -85,69 +63,49 @@ info = {
     "on Planet": "Заразились за сегодня 70000 человек",
 }
 
-keyboards["news"] = {
-    "buttons": [
-        [get_button(label=info_labels["Russia"], color="primary"),
-         get_button(label=info_labels["Moscow"], color="primary")],
-        [get_button(label=info_labels["Planet"], color="primary"),
-         get_button(label=info_labels["USA"], color="primary")],
-        [get_button(label=keyboard_labels["back"], color="negative")],
-    ]
-}
 
-keyboards["statistics"] = {
-    "buttons": [
-        [get_button(label=info_labels["on Russia"], color="primary"),
-         get_button(label=info_labels["on Moscow"], color="primary")],
-        [get_button(label=info_labels["on Planet"], color="primary"),
-         get_button(label=info_labels["on USA"], color="primary")],
-        [get_button(label=keyboard_labels["back"], color="negative")],
-    ]
-}
-
-keyboards["save_yourself"] = {
-    "buttons": [
-        [get_button(label=keyboard_labels["back"], color="negative")],
-    ]
-}
-
-keyboards["digital_pass"] = {
-    "buttons": [
-        [get_button(label=keyboard_labels["back"], color="negative")],
-    ]
-}
-
-keyboards["stickers"] = {
-    "buttons": [
-        [get_button(label=keyboard_labels["back"], color="negative")],
-    ]
-}
+def get_button(label, color, payload=""):
+    return dict(action={
+        "type": "text",
+        "label": label,
+        "payload": json.dumps(payload)
+    }, color=color)
 
 
-def create_keyboard(buttons):
+def create_keyboard(buttons, main=False):
     result = dict()
     result["buttons"] = list()
+    columns = 3
 
-    result["buttons"].append(list())
+    for button_number in range(len(buttons)):
+        if button_number % columns == 0:
+            result["buttons"].append(list())
+        row = button_number // columns
 
-    result["buttons"][0].append(get_button(label=buttons[0]["label"]["ru"], color="primary"))
-    result["buttons"][0].append(get_button(label=data["back_name"], color="negative"))
+        color = "primary"
+        if buttons[button_number]["type"] == "keyboard":
+            color = "default"
+        result["buttons"][row].append(get_button(label=buttons[button_number]["label"]["ru"], color=color))
+
+    if not main:
+        result["buttons"].append(list())
+        result["buttons"][-1].append(get_button(label=data["back_name"], color="negative"))
+
     return result
 
 
+keyboards = dict()
+keyboards["back"] = create_keyboard(data["buttons"], main=True)
 for keyboard_button in data["buttons"]:
     keyboards[keyboard_button["name"]] = create_keyboard(keyboard_button["buttons"])
 
 
-def change_keyboard(keyboard):
-    keyboard = json.dumps(keyboard, ensure_ascii=False).encode('utf-8')
-    keyboard = str(keyboard.decode('utf-8'))
-
-    return keyboard
+def json_to_string(keyboard):
+    return str(json.dumps(keyboard, ensure_ascii=False).encode('utf-8').decode('utf-8'))
 
 
 for key in keyboards:
-    keyboards[key] = change_keyboard(keyboards[key])
+    keyboards[key] = json_to_string(keyboards[key])
 
 
 def change_keyboard(user_id, keyboard, message="Выберите кнопку"):
