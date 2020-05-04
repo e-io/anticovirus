@@ -1,0 +1,194 @@
+{
+  "template": [
+    {
+      "type": "keyboard",
+      "name": "",
+      "label": {"ru": ""},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "",
+          "label": {"ru": ""},
+          "answer":{
+            "ru": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "back_name": "back",
+  "back_label": {"ru": "Назад"},
+  "buttons": [
+    {
+      "type": "keyboard",
+      "name": "news",
+      "_comment": "0 is russian version, 1 is english version",
+      "label": {"ru": "Новости"},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "Russia",
+          "label": {"ru": "Россия"},
+          "answer":{"ru": [
+              "Россия догоняет Италию. Как развивается эпидемия у нас и в других странах — изучаем на графиках",
+              "https://yandex.ru/news/story/Rossiya_dogonyaet_Italiyu_Kak_razvivaetsya_ehpidemiya_u_nas_i_v_drugikh_stranakh__izuchaem_na_grafikakh--66ecdf32e8655ae8c5d8acf6ac5e0527?lr=66&lang=ru&persistent_id=96187916&rubric=koronavirus&from=rubric"
+          ]}
+        },
+        {
+          "type": "answer",
+          "name": "Moscow",
+          "label": {
+            "ru": "Москва"
+          },
+          "answer": {
+            "ru": [
+              "1. В Москве разъяснили правила получения пропуска для поездки на дачу",
+              "https://yandex.ru/news/story/V_Moskve_razyasnili_pravila_polucheniya_propuska_dlya_poezdki_na_dachu--0e0e22c6649bdfd799d0964ee8906aa0?lr=66&lang=ru&stid=qW5rCuXgGhVoZ2r_zZph&persistent_id=96094307&rubric=koronavirus&from=rubric",
+              "\n2. В Подмосковье вводят обязательное ношение масок",
+              "https://yandex.ru/news/story/V_Podmoskove_vvodyat_obyazatelnoe_noshenie_zashhitnykh_masok_na_ulice--bd6244c13cfb453067267d6406fd54dc?lr=66&lang=ru&stid=ALLlx30HKLqUaxqaua6b&persistent_id=96112641&rubric=koronavirus&from=rubric"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "USA",
+          "label": {"ru": "США"},
+          "answer":{
+            "ru": [
+              "Трамп заявил о лабораторном происхождении нового коронавируса",
+              "https://yandex.ru/news/story/Tramp_zayavil_o_laboratornom_proiskhozhdenii_novogo_koronavirusa--e0eb1333fade8697500a04fef35d3fde?lr=66&lang=ru&stid=iVLnQgMrVGzkORws9Xgt&persistent_id=96157169&rubric=koronavirus&from=rubric"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "Planet",
+          "label": {"ru": "Планета"},
+          "answer":{
+            "ru": [
+              "Обнаружено новое средство от коронавируса",
+              "https://yandex.ru/news/story/Obnaruzheno_novoe_sredstvo_ot_koronavirusa--a03cc51a96448e72d906a0cacd8f6ee3?lr=66&lang=ru&stid=wzGnRgkOM6WbCi5oIDkS&persistent_id=96078312&rubric=koronavirus&from=rubric"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "keyboard",
+      "name": "Statistics",
+      "label": {"ru": "Статистика"},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "on Russia",
+          "label": {"ru": "по России"},
+          "answer":{
+            "ru": [
+              "Заразились за сегодня 7.000 человек"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "on Moscow",
+          "label": {"ru": "по Москве"},
+          "answer":{
+            "ru": [
+              "Заразились за сегодня 3.500 человек"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "on USA",
+          "label": {"ru": "по США"},
+          "answer":{
+            "ru": [
+              "Заразились за сегодня 31.300 человек"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "on Planet",
+          "label": {"ru": ""},
+          "answer":{
+            "ru": [
+              "Заразились за сегодня 70.000 человек"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "keyboard",
+      "name": "save_yourself",
+      "label": {"ru": "Как защититься"},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "pass",
+          "label": {"ru": "pass"},
+          "answer":{
+            "ru": [
+              "pass"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "keyboard",
+      "name": "stickers",
+      "label": {"ru": "Коронастикеры"},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "pass",
+          "label": {"ru": "pass"},
+          "answer":{
+            "ru": [
+              "pass"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "keyboard",
+      "name": "links",
+      "label": {"ru": "Полезные ссылки"},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "pass",
+          "label": {"ru": "pass"},
+          "answer":{
+            "ru": [
+              "pass"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "keyboard",
+      "name": "let_me_help",
+      "label": {"ru": "Помочь"},
+      "buttons": [
+        {
+          "type": "answer",
+          "name": "pass",
+          "label": {"ru": "pass"},
+          "answer":{
+            "ru": [
+              "pass"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
