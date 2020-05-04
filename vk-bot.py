@@ -18,7 +18,7 @@ for button in data["buttons"]:
     for button_ in button["buttons"]:
         info_labels[button_["name"]] = button_["label"]["ru"]
         info[button_["name"]] = "\n".join(button_["answer"]["ru"])
-keyboard_labels[data["back_name"]] = "back" # data["back_label"]["ru"]
+keyboard_labels[data["back_name"]] = data["back_label"]["ru"]
 
 
 def get_button(label, color, payload=""):
@@ -46,13 +46,13 @@ def create_keyboard(buttons, main=False):
 
     if not main:
         result["buttons"].append(list())
-        result["buttons"][-1].append(get_button(label=data["back_name"], color="negative"))
+        result["buttons"][-1].append(get_button(label=data["back_label"]["ru"], color="negative"))
 
     return result
 
 
 keyboards = dict()
-keyboards["back"] = create_keyboard(data["buttons"], main=True)
+keyboards[data["back_name"]] = create_keyboard(data["buttons"], main=True)
 for keyboard_button in data["buttons"]:
     keyboards[keyboard_button["name"]] = create_keyboard(keyboard_button["buttons"])
 
@@ -92,16 +92,17 @@ while True:
     for event in long_poll.listen():
         if event.type == VkEventType.MESSAGE_NEW:
             if event.from_user and not event.from_me:
-                if event.message in keyboard_labels.values():
+                Message = event.message[0:1].upper() + event.message[1:].lower()
+                if Message in keyboard_labels.values():
                     for key in keyboard_labels:
-                        if event.message == keyboard_labels[key]:
+                        if Message == keyboard_labels[key]:
                             change_keyboard(event.user_id,
                                             key,
                                             message="Выберите кнопку")
                             break
-                elif event.message in info_labels.values():
+                elif Message in info_labels.values():
                     for key in info_labels:
-                        if event.message == info_labels[key]:
+                        if Message == info_labels[key]:
                             print_info(event.user_id,
                                        message=info[key])
                             break
