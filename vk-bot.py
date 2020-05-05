@@ -10,17 +10,18 @@ import config
 vk_session = vk_api.VkApi(token=config.vk_token)
 long_poll = VkLongPoll(vk_session)
 data = json.load(open("data.json", encoding="utf-8"))
+lang = config.lang
 
 # creating labels and info dictionaries
 keyboard_labels = dict()
 info_labels = dict()
 info = dict()
 for button in data["buttons"]:
-    keyboard_labels[button["name"]] = button["label"]["ru"]
+    keyboard_labels[button["name"]] = button["label"][lang]
     for button_ in button["buttons"]:
-        info_labels[button_["name"]] = button_["label"]["ru"]
-        info[button_["name"]] = "\n".join(button_["answer"]["ru"])
-keyboard_labels[data["back_name"]] = data["back_label"]["ru"]
+        info_labels[button_["name"]] = button_["label"][lang]
+        info[button_["name"]] = "\n".join(button_["answer"][lang])
+keyboard_labels[data["back_name"]] = data["back_label"][lang]
 
 
 # creating keyboards
@@ -45,11 +46,11 @@ def create_keyboard(buttons, main=False):
         color = "primary"
         if buttons[button_number]["type"] == "keyboard":
             color = "default"
-        result["buttons"][row].append(get_button(label=buttons[button_number]["label"]["ru"], color=color))
+        result["buttons"][row].append(get_button(label=buttons[button_number]["label"][lang], color=color))
 
     if not main:
         result["buttons"].append(list())
-        result["buttons"][-1].append(get_button(label=data["back_label"]["ru"], color="negative"))
+        result["buttons"][-1].append(get_button(label=data["back_label"][lang], color="negative"))
 
     return result
 
@@ -74,7 +75,7 @@ def find_label_name(message, labels):
     return None
 
 
-def change_keyboard(user_id, keyboard_name, message=data["choose_button"]["ru"]):
+def change_keyboard(user_id, keyboard_name, message=data["choose_button"][lang]):
     vk_session.method('messages.send',
                       {
                           'user_id': user_id,
@@ -96,9 +97,9 @@ def print_info(user_id, message):
 def default_answer(user_id):
     vk_session.method('messages.send',
                       {'user_id': user_id,
-                       'message': data["not_recognized"]["ru"] +
+                       'message': data["not_recognized"][lang] +
                                   '. ' +
-                                  data["choose_button"]["ru"],
+                                  data["choose_button"][lang],
                        'random_id': random.random(),
                        })
 
@@ -112,7 +113,7 @@ def message_handler():
                     if name:
                         change_keyboard(event.user_id,
                                         name,
-                                        message=data["choose_button"]["ru"])
+                                        message=data["choose_button"][lang])
                         break
                     name = find_label_name(event.message, info_labels)
                     if name:
