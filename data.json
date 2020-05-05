@@ -149,27 +149,29 @@
           "label": {"ru": "ВОЗ"},
           "answer":{
             "ru": [
-              "Читать рекомендации ВОЗ на сайте: n9.cl/oc18"
+              "Читать рекомендации ВОЗ на сайте",
+              "https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "pass",
-          "label": {"ru": "pass"},
+          "name": "rospotrebnadzor",
+          "label": {"ru": "Роспотребнадзор"},
           "answer":{
             "ru": [
-              "pass"
+              "Читать рекомендации Роспотребнадзора (с картинками)",
+              "https://rospotrebnadzor.ru/about/info/news_time/news_details.php?ELEMENT_ID=13566"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "pass",
-          "label": {"ru": "pass"},
+          "name": "video",
+          "label": {"ru": "Видео"},
           "answer":{
             "ru": [
-              "pass"
+              "https://www.youtube.com/watch?v=rAj38E7vrS8"
             ]
           }
         }
