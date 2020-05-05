@@ -74,7 +74,7 @@ def find_label_name(message, labels):
     return None
 
 
-def change_keyboard(user_id, keyboard_name, message="Выберите кнопку"):
+def change_keyboard(user_id, keyboard_name, message=data["choose_button"]["ru"]):
     vk_session.method('messages.send',
                       {
                           'user_id': user_id,
@@ -96,7 +96,9 @@ def print_info(user_id, message):
 def default_answer(user_id):
     vk_session.method('messages.send',
                       {'user_id': user_id,
-                       'message': "Ваша команда не распознана. Выберите кнопку.",
+                       'message': data["not_recognized"]["ru"] +
+                                  '. ' +
+                                  data["choose_button"]["ru"],
                        'random_id': random.random(),
                        })
 
@@ -110,7 +112,7 @@ def message_handler():
                     if name:
                         change_keyboard(event.user_id,
                                         name,
-                                        message="Выберите кнопку")
+                                        message=data["choose_button"]["ru"])
                         break
                     name = find_label_name(event.message, info_labels)
                     if name:

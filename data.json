@@ -20,6 +20,8 @@
   ],
   "back_name": "back",
   "back_label": {"ru": "Назад"},
+  "not_recognized" : {"ru": "Команда не распознана"},
+  "choose_button" : {"ru": "Выберите кнопку"},
   "buttons": [
     {
       "type": "keyboard",
