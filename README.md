@@ -29,7 +29,7 @@ The bot consists of the following files:
 ├── .gitignore - you need to make sure that the venv folder from pycharm, which is large and not meaningful for storage, is not pushed to github
 ```
 
-# # # Functionality
+### Functionality
 
 This bot consists of ~6 menus. In each menu there are 4-6 buttons. When the button is clicked, information is displayed:
 - number of infected people (statistics)
