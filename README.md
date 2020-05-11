@@ -17,7 +17,7 @@ When creating a bot, it was considered important to make it less dry, more fun. 
 
 The bot consists of the following files:
 
-``
+```
 ├── data.json - this is where all the contents of the bot are located. Outside of this file, there is not a word in Russian, not a word about the coronavirus
 ├── vk-bot.py - here is the entire logic of the bot. The bot "eats" at the start of data.json and starts a loop that runs through the longpoll functions in the vk_api package
 ├── config.py - two-line file with t0kЕn and language
@@ -27,7 +27,7 @@ The bot consists of the following files:
 ├── Procfile - "worker" (performer), which you start using the switch in heroku
 ├── __init__.py - must be in the project according to heroku requirements, but may be empty
 ├── .gitignore - you need to make sure that the venv folder from pycharm, which is large and not meaningful for storage, is not pushed to github
-``
+```
 
 # # # Functionality
 
