@@ -98,10 +98,27 @@ def default_answer(user_id):
     vk_session.method('messages.send',
                       {'user_id': user_id,
                        'message': data["not_recognized"][lang] +
-                                  '. ' +
-                                  data["choose_button"][lang],
+                                  '.\n' +
+                                  data["choose_button"][lang] +
+                                  '\n' +
+                                  data["examples"][lang],
                        'random_id': random.random(),
                        })
+
+
+greetings = set()
+for key in data["start_commands"]:
+    for words_ in data["start_commands"][key]:
+        greetings.add(words_)
+
+
+def find_start_word(message):
+    message = message.lower()
+    for greeting in greetings:
+        if greeting in message:
+            return True
+
+    return None
 
 
 def message_handler():
@@ -119,6 +136,21 @@ def message_handler():
                     if name:
                         print_info(event.user_id,
                                    message=info[name])
+                        break
+                    is_greeting = find_start_word(event.message)
+                    if is_greeting:
+                        id_ = event.user_id
+                        user = vk_session.method("users.get", {"user_ids": id_})
+                        fullname = user[0]['first_name'] + ' ' + user[0]['last_name']
+                        message = data["greeting"][lang] + \
+                                  ' ' + fullname + \
+                                  '!\n' + data["start_message"][lang] + \
+                                  '\n' + data["examples"][lang]
+
+                        change_keyboard(event.user_id,
+                                        data["back_name"],
+                                        message=message
+                                        )
                         break
                     default_answer(event.user_id)
 
