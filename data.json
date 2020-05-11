@@ -20,56 +20,56 @@
   ],
   "back_name": "back",
   "back_label": {"ru": "Назад"},
+  "not_recognized" : {"ru": "Команда не распознана"},
+  "choose_button" : {"ru": "Выберите кнопку"},
   "buttons": [
     {
       "type": "keyboard",
       "name": "news",
-      "_comment": "0 is russian version, 1 is english version",
+      "_comment": "'ru' is russian version, 'en' is english version",
       "label": {"ru": "Новости"},
       "buttons": [
         {
           "type": "answer",
-          "name": "Russia",
+          "name": "news-russia",
           "label": {"ru": "Россия"},
           "answer":{"ru": [
-              "Россия догоняет Италию. Как развивается эпидемия у нас и в других странах — изучаем на графиках",
-              "https://yandex.ru/news/story/Rossiya_dogonyaet_Italiyu_Kak_razvivaetsya_ehpidemiya_u_nas_i_v_drugikh_stranakh__izuchaem_na_grafikakh--66ecdf32e8655ae8c5d8acf6ac5e0527?lr=66&lang=ru&persistent_id=96187916&rubric=koronavirus&from=rubric"
+            "Business FM: жара может спровоцировать скачок заражений коронавирусом",
+            "https://www.bfm.ru/news/443414"
           ]}
         },
         {
           "type": "answer",
-          "name": "Moscow",
+          "name": "news-moscow",
           "label": {
             "ru": "Москва"
           },
           "answer": {
             "ru": [
-              "1. В Москве разъяснили правила получения пропуска для поездки на дачу",
-              "https://yandex.ru/news/story/V_Moskve_razyasnili_pravila_polucheniya_propuska_dlya_poezdki_na_dachu--0e0e22c6649bdfd799d0964ee8906aa0?lr=66&lang=ru&stid=qW5rCuXgGhVoZ2r_zZph&persistent_id=96094307&rubric=koronavirus&from=rubric",
-              "\n2. В Подмосковье вводят обязательное ношение масок",
-              "https://yandex.ru/news/story/V_Podmoskove_vvodyat_obyazatelnoe_noshenie_zashhitnykh_masok_na_ulice--bd6244c13cfb453067267d6406fd54dc?lr=66&lang=ru&stid=ALLlx30HKLqUaxqaua6b&persistent_id=96112641&rubric=koronavirus&from=rubric"
+              "В Коммунарке после ИВЛ выжили 13,6% пациентов с COVID-19",
+              "https://www.kommersant.ru/doc/4341547"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "USA",
+          "name": "news-usa",
           "label": {"ru": "США"},
           "answer":{
             "ru": [
-              "Трамп заявил о лабораторном происхождении нового коронавируса",
-              "https://yandex.ru/news/story/Tramp_zayavil_o_laboratornom_proiskhozhdenii_novogo_koronavirusa--e0eb1333fade8697500a04fef35d3fde?lr=66&lang=ru&stid=iVLnQgMrVGzkORws9Xgt&persistent_id=96157169&rubric=koronavirus&from=rubric"
+            "В США одобрили тест на антиген, обнаруживающий коронавирус за минуты",
+            "https://ria.ru/20200509/1571230084.html"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "Planet",
+          "name": "news-planet",
           "label": {"ru": "Планета"},
           "answer":{
             "ru": [
-              "Обнаружено новое средство от коронавируса",
-              "https://yandex.ru/news/story/Obnaruzheno_novoe_sredstvo_ot_koronavirusa--a03cc51a96448e72d906a0cacd8f6ee3?lr=66&lang=ru&stid=wzGnRgkOM6WbCi5oIDkS&persistent_id=96078312&rubric=koronavirus&from=rubric"
+              "Опубликована карта и список стран с датами открытия их границ для туристов",
+              "https://www.tourprom.ru/news/46422/"
             ]
           }
         }
@@ -82,41 +82,41 @@
       "buttons": [
         {
           "type": "answer",
-          "name": "on Russia",
+          "name": "statistics-russia",
           "label": {"ru": "по России"},
           "answer":{
             "ru": [
-              "Заразились за сегодня 7.000 человек"
+              "В России:\n- заразились более 210.000 человек\n- умерли более 1.900 человек\n- вылечились более 34.000 человек"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "on Moscow",
+          "name": "statistics-moscow",
           "label": {"ru": "по Москве"},
           "answer":{
             "ru": [
-              "Заразились за сегодня 3.500 человек"
+              "В Москве:\n- заразились более 110.000 человек\n- умерли более 1.050 человек\n- вылечились более 13.500 человек"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "on USA",
+          "name": "statistics-usa",
           "label": {"ru": "по США"},
           "answer":{
             "ru": [
-              "Заразились за сегодня 31.300 человек"
+              "В США:\n- заразились более 1.350.000 человек\n- умерли более 80.000 человек\n- вылечились более 238.000 человек"
             ]
           }
         },
         {
           "type": "answer",
-          "name": "on Planet",
+          "name": "statistics-planet",
           "label": {"ru": "по Планете"},
           "answer":{
             "ru": [
-              "Заразились за сегодня 70.000 человек"
+              "На нашей планете:\n- заразились более 4.100.000 человек\n- умерли более 280.000 человек\n- вылечились более 1.460.000 человек"
             ]
           }
         }
@@ -124,16 +124,52 @@
     },
     {
       "type": "keyboard",
-      "name": "save_yourself",
+      "name": "save-yourself",
       "label": {"ru": "Как защититься"},
       "buttons": [
         {
           "type": "answer",
-          "name": "pass",
-          "label": {"ru": "pass"},
+          "name": "recommendations",
+          "label": {"ru": "Рекомендации"},
           "answer":{
             "ru": [
-              "pass"
+              "Защити себя и окружающих:",
+              "- Надевай маску выходя на улицу",
+              "- Не трогай без надобности ничего на улице либо надевайте перчатки",
+              "- Не докатайся до глаз, ноздрей и других слизистых",
+              "- Мой руки по возвращению домой"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "who",
+          "label": {"ru": "ВОЗ"},
+          "answer":{
+            "ru": [
+              "Читать рекомендации ВОЗ на сайте",
+              "https://www.who.int/ru/emergencies/diseases/novel-coronavirus-2019/advice-for-public"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "rospotrebnadzor",
+          "label": {"ru": "Роспотребнадзор"},
+          "answer":{
+            "ru": [
+              "Читать рекомендации Роспотребнадзора (с картинками)",
+              "\nhttps://rospotrebnadzor.ru/about/info/news_time/news_details.php?ELEMENT_ID=13566"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "video",
+          "label": {"ru": "Видео"},
+          "answer":{
+            "ru": [
+              "'Global COVID-19 Prevention' от Stanford Medicine покажет, как передается невидимый вирус\nhttps://www.youtube.com/watch?v=rAj38E7vrS8"
             ]
           }
         }
@@ -146,11 +182,58 @@
       "buttons": [
         {
           "type": "answer",
-          "name": "pass",
-          "label": {"ru": "pass"},
+          "name": "telegram-stickers",
+          "label": {"ru": "Для Telegram"},
           "answer":{
             "ru": [
-              "pass"
+              "Для телеграма создано много классных пакетов со стикерами. Мы отобрали для тебя лучшие из лучших. Выбирай какой нравится, копируй ссылку в окно интернет-браузера и получай стикерпак, щелкнув на кнопку-подтверждение",
+              "\nПозитивный коронавирус ждет вас в стикерпаке от Олега Шушко",
+              "tg://addstickers?set=StudyStatCoronavirus",
+              "\nКиностикеры -  всем известные мультяшные персонажы не хотят заразиться вирусом",
+              "tg://addstickers?set=mult_covid_2019",
+              "\nВеселые коронавирусы от команды телеграм",
+              "tg://addstickers?set=TheVirus",
+              "\nCoronaEmoji помогут выразить любое настроение с помощью вируса",
+              "tg://addstickers?set=CoronaEmoji",
+              "\nМилый коронавирусный зайчик сидит на карантине",
+              "tg://addstickers?set=CoronavirusBunny_stickers"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "whatsapp-stickers",
+          "label": {"ru": "Для WhatsApp"},
+          "answer":{
+            "ru": [
+              "Чтобы получить заветные коронастикеры на вотсап, совершите эти простые шаги:",
+              "\n1. Установите приложение stickify",
+              " - android https://play.google.com/store/apps/details?id=com.wastickerapps.stickerstore&hl=ru",
+              " - apple: найдите «stickers whatsapp» в app store",
+              "\n2. в поиске приложения введите имя пакета 'stay at home'",
+              "\n3. Кликните add to whatsapp",
+              "\nАналогично можете установить другие коронастикеры через приложение Virus Safety Stickers for WhatsApp. Все стикерпаки будут перечислены в меню приложения.\nhttps://play.google.com/store/apps/details?id=com.darshan.virussafety"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "vk-stickers",
+          "label": {"ru": "Для VK"},
+          "answer":{
+            "ru": [
+              "В контакте до сих пор нет и, вероятно, не будет коронавирусных стикерпаков из-за политики компании. Однако кто ищет, тот всегда найдет. Есть обходной маневр - через приложение toGraffiti:\n\n- «Коронавирус :: мультфильмы» - мультяшные герои в эпоху вируса\nhttps://vk.com/toGraffiti#pack271670420\n\n- «COVID-19» - популярные мемы в формате короны\nhttps://vk.com/toGraffiti#pack271670464\n\n- «Corona» - зарисовки на тему самоизоляции\nhttps://vk.com/toGraffiti#pack271670487\n\nЩелкайте по ссылке, соглашайтесь с доступом, добавляйте стикеры. Они появятся в «документах» и их можно прикреплять к сообщениям, щелкая вложение->документы->нужный_стикер при отправке сообщения."
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "wechat-stickers",
+          "label": {"ru": "Для WeChat"},
+          "answer":{
+            "ru": [
+              "В вичате создано много разных красивых и милых стикеров на тему коронавируса и самоизоляции. Они такие же крутые как в телеграме, но только другие.",
+              "Чтобы заполучить их, достаточно сделать 6 простых шагов:\n\n\t1.\tОткройте WeChat\n\t2.\tНажмите на правую вкладку меню «Me» (я, 我)\n\t3.\tНажмите на пункт Stickers (Стикеры) cо смайликом\n\t4.\tНажмите на лупу и введите в поиске 新冠 (xīn guàn - коронавирус, можете иероглифы скопировать отсюда). Вам высветятся результаты поиска\n\t5.\tВыбирайте понравившиеся стикеры, жмите Add (Добавить)\n\t6.\tНаслаждайтесь перепиской используя крутые коронастикеры!"
             ]
           }
         }
@@ -163,11 +246,71 @@
       "buttons": [
         {
           "type": "answer",
-          "name": "pass",
-          "label": {"ru": "pass"},
+          "name": "make-pass",
+          "label": {"ru": "Оформить пропуск"},
           "answer":{
             "ru": [
-              "pass"
+              "Оформить мобильный пропуск на сайте госуслуг",
+              "https://propusk.gosuslugi.ru"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "free-test",
+          "label": {"ru": "Бесплатный тест"},
+          "answer":{
+            "ru": [
+              "Пройти бесплатный тест на коронавирус от Яндекса",
+              "https://yandex.ru/q/question/health/kak_proiti_besplatnyi_test_na_koronavirus_f7a6afa0/"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "monitor",
+          "label": {"ru": "Аналитика"},
+          "answer":{
+            "ru": [
+              "На сайте coronavirus-monitor.ru вы можете узнать подробную наглядную информацию о статистике распространения коронавируса в России и мире",
+              "\nhttps://coronavirus-monitor.ru/coronavirus-v-rossii/"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "thebaselab",
+          "label": {"ru": "Карта вируса"},
+          "answer":{
+            "ru": [
+              "Сайт coronavirus.thebaselab.com введет вас в курс событий о распространении коронавируса по миру и даст наглядную карту",
+              "\nhttps://coronavirus.thebaselab.com"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "memes",
+          "label": {"ru": "Мемасики"},
+          "answer":{
+            "ru": [
+              "Хотите поднять настроение? На странице koronovirus.site/ru/mem/ вы найдете много отменных шуток на тему текущей пандемии",
+              "\nhttps://koronovirus.site/ru/mem/"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "pass",
+          "label": {"ru": "Лирика"},
+          "answer":{
+            "ru": [
+              "Хочешь поэзии на злобу дня?",
+              "В подкасте «Лирика коронавирус» ты услышишь стихи современных российских поэтов на тему новой пандемии",
+              "\nГугл подкасты:",
+              "https://podcasts.google.com/?feed=aHR0cDovL3Jzcy5jYXN0Ym94LmZtL2V2ZXJlc3QvNmZmM2Q5N2M4NzNiNDM5MDhiOTEwODcyMzZmYWI3ODMueG1s",
+              "\nКроссплатформенный castbox:",
+              "https://castbox.fm/channel/Лирика-Коронавируса-id2728327"
             ]
           }
         }
@@ -180,11 +323,45 @@
       "buttons": [
         {
           "type": "answer",
-          "name": "pass",
-          "label": {"ru": "pass"},
+          "name": "we-are-together",
+          "label": {"ru": "#МыВместе"},
           "answer":{
             "ru": [
-              "pass"
+              "Акция взаимопомощи #МыВместе направлена на поддержку пожилых, маломобильных граждан и медицинских сотрудников во время пандемии коронавируса. Вы можете помочь став волонтером, сделав пожертвование, купив продукты и другими способами.",
+              "\nhttps://мывместе2020.рф"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "rusfond",
+          "label": {"ru": "Русфонд"},
+          "answer":{
+            "ru": [
+              "Русфонд помогает врачам и клиникам в 10 крупных регионах России от Петербурга до Владивостока.\nМожно почитать как работает проект и помочь рублем в любой из 10 регионов, где работает проект",
+              "\nhttps://rusfond.ru/coronavirus"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "help-nearby",
+          "label": {"ru": "Помощь рядом"},
+          "answer":{
+            "ru": [
+              "Благотворительный портал при поддержке яндекса. Можно внести сумму-пожертвование и получать отчеты, как проект помогает бороться с коронавирусом.",
+              "\nhttps://help.yandex.ru/?utm_campaign=persey_blago"
+            ]
+          }
+        },
+        {
+          "type": "answer",
+          "name": "ya-doma",
+          "label": {"ru": "Социальный волонтер"},
+          "answer":{
+            "ru": [
+              "Если вы живете в Москве, то вы можете стать социальным волонтером и помогать пожилым людям, оберегая их в этот трудный момент. Каждому участнику выдается специальный яркий бейдж, позволяющий беспрепятственно передвигаться по городу",
+              "\nhttps://ya-doma.ru/social-help/"
             ]
           }
         }
