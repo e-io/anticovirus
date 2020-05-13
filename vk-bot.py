@@ -86,10 +86,11 @@ def change_keyboard(user_id, keyboard_name, message=data["choose_button"][lang])
                       )
 
 
-def print_info(user_id, message):
+def print_info(user_id, message, attachment=None):
     vk_session.method('messages.send',
                       {'user_id': user_id,
                        'message': message,
+                       'attachment': attachment,
                        'random_id': random.random(),
                        })
 
@@ -126,6 +127,15 @@ def message_handler():
         for event in long_poll.listen():
             if event.type == VkEventType.MESSAGE_NEW:
                 if event.from_user and not event.from_me:
+                    if event.message.lower() in set(["случайный коронамем", "коронамем", "мем"]):
+                        random.seed()
+                        n = random.randint(0, 20)
+                        address = data["buttons"][2]["buttons"][0]["random-image"][n]
+                        print(address)
+                        print_info(event.user_id,
+                                   message=":-)",
+                                   attachment=address)
+                        break
                     name = find_label_name(event.message, keyboard_labels)
                     if name:
                         change_keyboard(event.user_id,
