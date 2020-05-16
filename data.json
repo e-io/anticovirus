@@ -1,2 +1,67 @@
 {
+  "template": {
+    "buttons": [
+      {
+        "label": {"ru": "Label"},
+        "_comment_names": "any name is checking for existence inside every message of user",
+        "keywords": {"ru": [
+          "synonym1",
+          "synonym2"
+        ]},
+
+        "text": {"ru": "text for answer"},
+        "image": "name of file or link to this file",
+        "random-text": {"ru":[
+          "option1",
+          "option2"
+        ]},
+        "random-image": [
+          "link_to_image1",
+          "link_to_image2"
+        ],
+
+        "buttons": [
+
+        ]
+      }
+    ]
+  },
+
+  "start": {
+    "_comment": "'start' is a fixed standard name for start button",
+    "label": {
+      "ru": "✅Начать",
+      "en": "✅Start"
+    },
+    "keywords": {"ru": [
+      "начать",
+      "привет",
+      "здорово"
+    ]},
+
+    "text": {"ru": [
+      "Привет пользователь!"
+    ]}
+  },
+
+  "back": {
+    "label": {
+      "ru": "⬅Назад"
+    },
+    "keywords": {"ru": [
+      "назад",
+      "вернуться"
+    ]}
+  },
+
+  "buttons": [
+    {
+      "label": {"ru": "\uD83D\uDCC3 Оформить пропуск"},
+      "keywords": {"ru": [
+        "пропуск"
+      ]},
+
+      "text": {"ru": "Оформите пропуск на госуслугах \n propusk.gosuslugi.ru"}
+      }
+  ]
 }
