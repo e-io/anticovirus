@@ -6,7 +6,7 @@ def version_info(lib):
     return f"{lib}=={version}\n"
 
 if __name__ == "__main__":
-    libs = ["vk_api"]
+    libs = ["pytelegrambotapi", "vk_api"]
 
     with open("requirements.txt", 'w') as file:
         for lib in libs:

@@ -9,7 +9,7 @@ import config
 # starting loads
 vk_session = vk_api.VkApi(token=config.vk_token)
 long_poll = VkLongPoll(vk_session)
-data = json.load(open("data.json", encoding="utf-8"))
+data = json.load(open("data_old.json", encoding="utf-8"))
 lang = config.lang
 
 # creating labels and info dictionaries

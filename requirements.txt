@@ -1,1 +1,2 @@
+pytelegrambotapi==3.7.1
 vk_api==11.8.0
