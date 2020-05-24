@@ -40,9 +40,9 @@ class Bot:
         elif type_ == "vk":
             self.vk = vk_api.VkApi(token=token)
         else:
-            raise (Exception("this type of bot is not supported"))
+            raise Exception("this type of bot is not being supported")
 
-    def __init__(self, type, token, lang, data):
+    def __init__(self, type_, token, data, lang=None):
         """
         Constructor
         type: tg (telegram) or vk
@@ -54,10 +54,12 @@ class Bot:
 
         self.root = None
 
+        self.lang = None
+
         self.data = json.load(open(data), encoding="utf-8")
         self.start = Button(self.data["start"])
 
-        self.add(type, token, lang)
+        self.add(type_, token, lang)
 
     def sender(self, source, id, text):
         if source == "tg":
@@ -105,7 +107,7 @@ class Bot:
 
     async def receiver(self):
         tasks = list()
-        if self.vk: tasks.append(asyncio.create_task(self.receiver_vk()))
+        if self.vk: pass #tasks.append(asyncio.create_task(self.receiver_vk()))
         if self.tg: tasks.append(asyncio.create_task(self.receiver_tg()))
         await asyncio.gather(*tasks)
 

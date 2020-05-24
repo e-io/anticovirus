@@ -4,13 +4,13 @@ import json
 import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 
-import config
+import old_config
 
 # starting loads
-vk_session = vk_api.VkApi(token=config.vk_token)
+vk_session = vk_api.VkApi(token=old_config.vk_token)
 long_poll = VkLongPoll(vk_session)
-data = json.load(open("data_old.json", encoding="utf-8"))
-lang = config.lang
+data = json.load(open("old_data.json", encoding="utf-8"))
+lang = old_config.lang
 
 # creating labels and info dictionaries
 keyboard_labels = dict()
