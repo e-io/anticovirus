@@ -27,7 +27,8 @@
     ]
   },
 
-  "lang": "ru",
+  "main_language": "ru",
+  "additional_languages": [],
 
   "start": {
     "_comment": "'start' is a fixed standard name for start button",

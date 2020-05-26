@@ -27,28 +27,42 @@ class Button:
                 self.buttons.add(button)
 
 
+class Data:
+    def __init__(self, file_):
+        json_ = json.load(open(file), encoding="utf-8")
+
+        self.langs = set()
+        self.lang0 = json_["main_language"]
+        self.langs.add(self.lang0)
+        if "additional_languages" in json_:
+            for lang in json_["additional_languages"]:
+                self.langs.add(lang)
+
+        self.start = Button(json_["start"])
+
+
 class Bot:
+    def __init__(self, data, lang, type_, token):
+        self.data = data
+        self.type = type_
+        self.lang = lang
+
+        self.api = api
+
+
+class LordOfBots:
     """
     This is universal class for any chat-bots
     """
-
-    def add(self, type_, token, lang):
-        self.lang = lang
-
-        if type_ == "tg":
-            self.tg = telebot.TeleBot(token)
-        elif type_ == "vk":
-            self.vk = vk_api.VkApi(token=token)
-        else:
-            raise Exception("this type of bot is not being supported")
-
-    def __init__(self, type_, token, data, lang=None):
+    def __init__(self):
         """
         Constructor
-        type: tg (telegram) or vk
-        token: token
-        data: name of json file with all data for bot
         """
+        data = dict()
+        bots = dict()
+
+
+    def add_json(self, type_, token, data, lang=None):
         self.tg = None
         self.vk = None
 
@@ -56,8 +70,6 @@ class Bot:
 
         self.lang = None
 
-        self.data = json.load(open(data), encoding="utf-8")
-        self.start = Button(self.data["start"])
 
         self.add(type_, token, lang)
 
@@ -74,6 +86,16 @@ class Bot:
                                'message': text,
                                'random_id': random.random()
                            })
+
+    def add(self, type_, token, lang):
+        self.lang = lang
+
+        if type_ == "tg":
+            self.tg = telebot.TeleBot(token)
+        elif type_ == "vk":
+            self.vk = vk_api.VkApi(token=token)
+        else:
+            raise Exception("this type of bot is not being supported")
 
     def analyzer(self, source, id, message):
         message = message.lower()
